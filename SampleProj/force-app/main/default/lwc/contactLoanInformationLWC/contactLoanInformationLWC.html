@@ -1,0 +1,12 @@
+<template>
+    <lightning-card title="Case Loan Information" icon-name="standard:contact">
+        <template if:true={cases.data}>
+            <div class="slds-m-around_medium">
+                <p>{Type}</p>
+                <p>{CaseNumber}</p>
+                <p><lightning-formatted-phone value={ContactPhone}></lightning-formatted-phone></p>
+               
+            </div>
+        </template>
+    </lightning-card>
+</template>

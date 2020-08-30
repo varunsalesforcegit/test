@@ -1,0 +1,4 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction,lightning:isUrlAddressable" access="global" >
+	<aura:attribute name="recordId" type="Id" access="global" />
+    <c:caseCompWithSameLoanNUm  recordId="{!v.pageReference.state.c__recordId}"  ></c:caseCompWithSameLoanNUm>
+</aura:component>

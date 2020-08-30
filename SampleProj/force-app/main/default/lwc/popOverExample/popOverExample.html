@@ -1,0 +1,19 @@
+<template>
+    <div>
+        <template if:true={ranger} >
+            <p>Casesssss</p>
+            <lightning-record-view-form
+                    record-id={ranger}
+                    object-api-name="Case">
+                    <div class="slds-popover slds-nubbin_left potato slds-box" style={boxClass} >
+                    <lightning-output-field field-name="CaseNumber">
+                    </lightning-output-field>
+                    <lightning-output-field field-name="Loan_Number__c">
+                    </lightning-output-field>
+                    </div>
+            </lightning-record-view-form>
+
+            
+        </template>
+    </div>
+</template>

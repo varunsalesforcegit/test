@@ -1,0 +1,24 @@
+<aura:component controller="conRelController" implements="flexipage:availableForRecordHome,force:lightningQuickActionWithoutHeader,force:hasRecordId" access="global">
+    <aura:handler name="init" value="{!this}" action="{!c.myAction}"/>
+    <aura:attribute name="contacts" type="Contact[]" />
+    <table>
+        <tr>
+            <td>
+                <b>Name</b>
+            </td>
+            <td>
+                <b>phone</b>
+            </td>
+            <td>
+                <b>lastName</b>
+            </td>
+        </tr>
+        <aura:iteration items="{!v.contacts}" var="cont" >
+            <tr>  
+                <td> {!cont.Name}  </td>
+                  <td> {!cont.phone}  </td>                 
+                <td> {!cont.lastName}  </td>
+            </tr> 
+         </aura:iteration>                                           
+    </table>    
+</aura:component>

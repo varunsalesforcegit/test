@@ -1,0 +1,94 @@
+<apex:page standardController="Account" extensions="SingleViewController" showHeader="false" sidebar="false">
+
+    <!-- Define Tab panel .css styles -->
+        <apex:form >
+    <apex:pageBlock title="360 View of Customer">
+         <!-- Create Tab panel -->
+    <apex:tabPanel switchType="client" selectedTab="name1" id="AccountTabPanel"
+        tabClass="activeTab" inactiveTabClass="inactiveTab">
+        <apex:tab label="Account" name="name1" id="tabOne"  onclick="onClickAppConfig()" >
+        <div style="overflow: scroll; width: auto; height: 200px;">    
+        <apex:pageBlock title="{!IF(parentAccount != NULL,'Parent Account','There are no records to display')}">
+             
+        <apex:pageBlockTable value="{!parentAccount}" var="act"  rendered="{!parentAccount != NULL}">
+            <apex:column headerValue="Account Name">
+                <apex:outputlink target="_blank"   value="/{!act.Id}">{!act.Name}</apex:outputlink>                    
+            </apex:column>
+              <apex:column headerValue="Parent Name"  >
+                  <apex:outputlink target="_blank"   value="/{!act.ParentId}">{!act.Parent.Name}</apex:outputlink>                    
+            </apex:column>
+            <apex:column headerValue="Ultimate Parent" >
+                <apex:outputlink target="_blank"    value="/{!act.Ultimate_account_Id__c}" >{!act.Ultimate_Parent__c}</apex:outputlink>                    
+            </apex:column>
+            <!-- Header Generated automatically -->
+        </apex:pageBlockTable>
+    </apex:pageBlock>
+              
+            
+        <apex:pageBlock title="{!IF(childAccount != NULL && childAccount.size > 0,'Child Accounts','There are no records to display')}">
+             
+        <apex:pageBlockTable value="{!childAccount}" var="act" rendered = "{!childAccount.size > 0}">
+            <apex:column headerValue="Account Name">
+                <apex:outputlink target="_blank"   value="/{!act.Id}">{!act.Name}</apex:outputlink>                    
+            </apex:column>
+              <apex:column headerValue="Parent Name"  >
+                  <apex:outputlink target="_blank"   value="/{!act.ParentId}">{!act.Parent.Name}</apex:outputlink>                    
+            </apex:column>
+            <apex:column headerValue="Ultimate Parent" >
+                <apex:outputlink target="_blank"    value="/{!act.Ultimate_account_Id__c}" >{!act.Ultimate_Parent__c}</apex:outputlink>                    
+            </apex:column>
+            <!-- Header Generated automatically -->
+        </apex:pageBlockTable>
+             <apex:panelGrid columns="7">
+                <apex:commandButton status="fetchStatus" reRender="pb" value="|<" action="{!setCon.first}" disabled="{!!setCon.hasPrevious}" title="First Page"/>
+                <apex:commandButton status="fetchStatus" reRender="pb" value="<" action="{!setCon.previous}" disabled="{!!setCon.hasPrevious}" title="Previous Page"/>
+                <apex:commandButton status="fetchStatus" reRender="pb" value=">" action="{!setCon.next}" disabled="{!!setCon.hasNext}" title="Next Page"/>
+                <apex:commandButton status="fetchStatus" reRender="pb" value=">|" action="{!setCon.last}" disabled="{!!setCon.hasNext}" title="Last Page"/>
+                <apex:outputText >{!(setCon.pageNumber * size)+1-size}-{!IF((setCon.pageNumber * size)>noOfRecords, noOfRecords,(setCon.pageNumber * size))} of {!noOfRecords}</apex:outputText>
+                <apex:commandButton status="fetchStatus" reRender="pb" value="Refresh" action="{!refresh}" title="Refresh Page"/>
+                <apex:outputPanel style="color:#4AA02C;font-weight:bold">
+                    <apex:actionStatus id="fetchStatus" startText="Fetching..." stopText=""/>
+                </apex:outputPanel>
+            </apex:panelGrid>
+    </apex:pageBlock>
+            </div>
+            
+           
+                 
+        </apex:tab>
+        <!--<apex:tab label="Opportunities" name="name2" id="tabTwo"  onclick="onClickOpty()" >
+            
+             <div style="overflow: scroll; width: auto; height: 200px;">    
+        <apex:pageBlock title="{!IF(allOpts != NULL && allOpts.size > 0,'All Opportunities','There are no records to display')}">
+             
+        <apex:pageBlockTable value="{!allOpts}" var="Opty" rendered = "{!allOpts.size > 0}" >
+            <apex:column headerValue="Opportunity Name">
+             <apex:outputlink target="_blank"   value="/{!Opty.Id}">{!Opty.Name}</apex:outputlink>                    
+            </apex:column>
+            <apex:column headerValue="Account"  >
+            <apex:outputlink target="_blank"   value="/{!Opty.AccountId}">{!Opty.Account.Name}</apex:outputlink>                    
+            </apex:column>
+            <apex:column headerValue="Amount" value="{!Opty.Amount}" />
+            <apex:column headerValue="CloseDate" value="{!Opty.CloseDate}" />
+            
+        </apex:pageBlockTable>
+    </apex:pageBlock>
+            </div>
+                  </apex:tab>-->
+       
+    </apex:tabPanel>
+        <apex:actionFunction action="{!fetchParentAccAndChildAcc}" name="onClickAppConfig" >
+            <!-- add any parameters if you want -->
+        </apex:actionFunction>
+         <!--<apex:actionFunction action="{!fetchAllOppts}" name="onClickOpty">
+            
+        </apex:actionFunction>-->
+    </apex:pageBlock>
+    
+    <style>
+    .activeTab {background-color: #236FBD; color:white; background-image:none}
+    .inactiveTab { background-color: lightgrey; color:black; background-image:none}
+    </style>
+   </apex:form>     
+
+</apex:page>

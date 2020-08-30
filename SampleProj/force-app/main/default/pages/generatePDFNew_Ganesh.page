@@ -1,0 +1,49 @@
+<apex:page showHeader="false" renderAs="PDF" controller="aaPage03C">
+<html>
+<head>
+    <style>
+        @page {
+            size: letter;
+            margin: 25mm;
+            margin-top: 0.8cm;
+            @bottom-center {
+                content: "Page " counter(page) " of " counter(pages);
+            }
+            @top-center {
+              background-image: url('{!URLFOR($Resource.Aperture)}');
+               // background-image: url('https://cs2.salesforce.com/servlet/servlet.FileDownload?file=015R00000005wmn');
+                background-repeat: no-repeat;
+                background-position: center top;
+                width: 100%;
+            }
+        }
+        .page-break {
+            display:block;
+            page-break-after:always;
+        }
+        body {
+            font-family: Arial Unicode MS;
+        }
+         div.header {
+            padding: 10px;
+            position: running(header);
+            text-align: center;
+            }
+            page :first{
+            
+            }
+    </style>
+</head>
+<body>
+    <!--<div class="page-break">-->
+    <div class="header">
+     <apex:image value="{!$Resource.Aperture}"  width="100" height="50" />
+        <apex:repeat value="{!lines}" var="l">
+            <apex:outputText >{!l}</apex:outputText><br/>
+        </apex:repeat>
+    </div>
+    <div class="page-break">Page B</div>
+    <div>Page C</div>
+</body>
+</html>
+</apex:page>

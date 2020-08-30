@@ -1,0 +1,361 @@
+<apex:page controller="generatePDFCont" standardStylesheets="false" applyBodyTag="false" applyHtmlTag="false" showHeader="false" sidebar="false" action="{!getfetchPdfData}" renderAs="pdf">
+  
+     <head>
+  
+ <style type="text/css">
+ body { font-family: Arial Unicode MS; }
+ </style> 
+  <style type="text/css" media="print">  
+       @page {
+            size:portrait;
+            margin-left: 1.54cm;
+            margin-right: 2.54cm;
+            margin-top: 2.54cm;
+            margin-bottom: 1.54cm;
+            @top-center {
+            content: element(header);
+            }
+            @bottom-left {
+            content: element(footer);
+            }
+            }
+            div.header {
+            padding: 20px;
+            position: running(header);
+            text-align: left;
+            }
+        
+            div.footer {
+            padding: 5px;
+            position: running(footer);
+            }
+            .pagenumber:before {
+            content: counter(page);
+            }
+            .pagecount:after {
+            content: counter(pages);
+            } 
+            
+        
+
+     
+        </style>    
+ </head>
+
+ <div class="header">
+     <apex:image value="{!$Resource.Aperture}"  width="100" height="50" /> <br/> 
+    
+     <table>
+         
+         <tr>
+             <td style="padding:0 100px 0 105px;" >Demographics</td> 
+             <td></td>
+             
+             <td style="padding:0 100px 0 250px;">Age23</td>
+         </tr>
+         <tr>
+             <td style="padding:0 100px 0 105px;" >Demographics2</td> 
+             <td></td>
+             
+             <td style="padding:0 100px 0 250px;">Age2113</td>
+         </tr>
+  </table>
+     
+     
+     </div> 
+    <br/>
+     <apex:outputPanel rendered="{!If(idResAndAccWrapLst.size>0 && idResAndAccWrapLst[0].accWrap != null,True,False)}">  
+   <h1>{!idResAndAccWrapLst[0].accWrap.Name}</h1>
+      
+    
+      <table >
+            <tr>
+            <td class="b" >Demographics</td> 
+            </tr>
+          
+               
+          <td>
+           <td  style="padding:0 100px 0 105px;">
+               
+               Social Security Number
+                 <td>{!idResAndAccWrapLst[0].accWrap.Name}</td>             
+          </td>
+         </td>
+        <tr>
+        <td>
+           <td  style="padding:0 100px 0 105px;">
+               
+               Social Security Number2
+                 <td>{!idResAndAccWrapLst[0].accWrap.Name}</td>             
+          </td>
+         </td>
+        </tr>
+        <tr>
+        <td>
+           <td  style="padding:0 100px 0 105px;">
+               
+               Social Security Number2
+                 <td>{!idResAndAccWrapLst[0].accWrap.Name}</td>             
+          </td>
+         </td>
+        </tr>
+        <tr>
+        <td>
+           <td  style="padding:0 100px 0 105px;">
+               
+               Social Security Number2
+                 <td>{!idResAndAccWrapLst[0].accWrap.Name}</td>             
+          </td>
+         </td>
+        </tr>
+        <tr>
+        <td>
+         <td  style="padding:0 100px 0 105px;">
+               
+               Social Security Number2
+                 <td>{!idResAndAccWrapLst[0].accWrap.Name}</td>             
+          </td>
+         </td>
+        </tr>
+<br/>
+        <tr>
+            <td>NPI Information
+            </td> 
+            <th style="padding:0 70px 0 95px;">NPI</th>
+        </tr>
+        <td>
+           <td  style="padding:0 100px 0 95px;">               
+               NPI Number
+
+                 <td style="padding:0 100px 0 75px;">{!idResAndAccWrapLst[0].accWrap.Name}</td>             
+          </td>
+         </td>
+
+<br/>
+        <tr>
+            <td>Office Information
+            </td> 
+           
+        </tr>
+                  <td>
+           <td  style="padding:0 100px 0 70px;">
+               
+              Mailing Address
+                 <td></td>             
+          </td>
+         </td>
+        <tr>
+        <td>
+           <td  style="padding:0 100px 0 235px;">
+                 <td>{!idResAndAccWrapLst[0].accWrap.BillingStreet}</td>             
+          </td>
+         </td>
+        </tr>
+                <tr>
+        <td>
+           <td  style="padding:0 100px 0 105px;">
+                 <td>{!idResAndAccWrapLst[0].accWrap.BillingState}</td>             
+          </td>
+         </td>
+        </tr>
+        <tr>
+        <td>
+           <td  style="padding:0 100px 0 105px;">
+                 <td>{!idResAndAccWrapLst[0].accWrap.BillingPostalCode}</td>             
+          </td>
+         </td>
+        </tr>
+        <tr>
+        <td>
+           <td  style="padding:0 100px 0 105px;">
+                 <td>{!idResAndAccWrapLst[0].accWrap.BillingPostalCode}</td>             
+          </td>
+         </td>
+        </tr>
+        <tr>
+        <td>
+           <td  style="padding:0 100px 0 105px;">
+                 <td>{!idResAndAccWrapLst[0].accWrap.BillingPostalCode}</td>             
+          </td>
+         </td>
+        </tr>
+
+<td>
+           <td  style="padding:0 100px 0 75px;">
+               
+               Phone
+                 <td>{!idResAndAccWrapLst[0].accWrap.Phone}</td>             
+          </td>
+         </td>
+        <tr>
+        <td>
+           <td  style="padding:0 100px 0 75px;">
+               
+               Fax
+                 <td>{!idResAndAccWrapLst[0].accWrap.Fax}</td>             
+          </td>
+         </td>
+        </tr>
+
+<br/>
+ <body >         
+     
+            <apex:repeat value="{!idResAndAccWrapLst}" var="record">
+                
+               <apex:repeat value="{!record.lstIdResObj}" var="record1">
+          
+                
+                <tr>
+                    <td>Verification Assignment</td> 
+                </tr>
+                
+                
+                <td>
+                    <td  style="padding:0 100px 0 35px;">
+                        
+                        Verification Name
+                        <td style="padding:0 100px 0 45px;">{!record1.Name}</td>             
+                 </td>
+            </td>   
+                
+<br/>                
+            <tr>
+            <td style="padding:0 20px 0 5px;">Manual Verification</td> 
+            </tr>
+          
+               
+          <td>
+           <td  style="padding:0 40px 0 35px;">
+               
+              Verification Status
+                 <td style="padding:0 40px 0 45px;">record.NPI_Check__c</td>             
+          </td>
+         </td>
+        <tr>
+        <td>
+           <td  style="padding:0 40px 0 35px;">
+               
+               Verification Result
+
+                 <td style="padding:0 40px 0 45px;">record.ProviderNPI__c</td>             
+          </td>
+         </td>
+        </tr>
+        <tr>
+        <td>
+           <td   style="padding:0 40px 0 35px;">
+               
+               User Performed Verification
+
+                 <td style="padding:0 40px 0 45px;">HIiiiiiiiii44444444433333333</td>             
+          </td>
+         </td>
+        </tr>
+        <tr>
+        <td>
+         <td   style="padding:0 40px 0 35px;">
+               
+              Verification Result Notes
+
+                 <td style="padding:0 40px 0 45px;">HIiiiiiiiii</td>             
+          </td>
+         </td>
+        </tr>
+        <tr>
+        <td>
+         <td style="padding:0 40px 0 35px;">
+               
+              Last Verified Date
+
+
+                 <td style="padding:0 40px 0 45px;">HIiiiiiiiii</td>             
+          </td>
+         </td>
+        </tr>
+         <br/>
+        <br/>                
+            <tr>
+            <td style="padding:0 20px 0 5px;">Auto-Verification</td> 
+            </tr>
+          
+               
+          <td>
+           <td  style="padding:0 40px 0 35px;">
+               
+             Auto-Verication Date
+                 <td style="padding:0 40px 0 45px;">HIiiiiiiiii</td>             
+          </td>
+         </td>
+        <tr>
+        <td>
+           <td  style="padding:0 40px 0 35px;">
+               
+               Auto-Verification Description
+
+                 <td style="padding:0 40px 0 45px;">HIiiiiiiiii</td>             
+          </td>
+         </td>
+        </tr>
+        <tr>
+        <td>
+           <td   style="padding:0 40px 0 35px;">
+               
+              Auto-Verification Status
+
+
+                 <td style="padding:0 40px 0 45px;">HIiiiiiiiii44444444433333333</td>             
+          </td>
+         </td>
+        </tr>
+        <tr>
+        <td>
+         <td   style="padding:0 40px 0 35px;">
+               
+             Verification Source
+
+
+                 <td style="padding:0 40px 0 45px;">HIiiiiiiiii</td>             
+          </td>
+         </td>
+        </tr>
+        <tr>
+        <td>
+         <td style="padding:0 40px 0 35px;">
+               
+              Last Verified Date
+
+
+                 <td style="padding:0 40px 0 45px;">HIiiiiiiiii</td>             
+          </td>
+         </td>
+        </tr>
+<tr>
+        <td>
+         <td style="padding:0 40px 0 35px;">
+               
+              Last Verified Date
+
+
+                 <td style="padding:0 40px 0 45px;">HIiiiiiiiii</td>             
+          </td>
+         </td>
+        </tr>
+        
+                   
+               
+                <br/> 
+            </apex:repeat>
+            
+            </apex:repeat>
+           
+        </body>
+                
+
+          
+  
+    </table>
+</apex:outputPanel>  
+      
+
+    
+</apex:page>

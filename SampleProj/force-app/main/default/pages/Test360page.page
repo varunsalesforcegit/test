@@ -1,0 +1,20 @@
+<apex:page standardController="Account" showHeader="false" sidebar="false">
+    <!-- Define Tab panel .css styles -->
+    <apex:pageBlock title="360 View of Customer">
+         <!-- Create Tab panel -->
+    <apex:tabPanel switchType="client" selectedTab="name2" id="AccountTabPanel"
+        tabClass="activeTab" inactiveTabClass="inactiveTab">
+        <apex:tab label="Account" name="name1" id="tabOne">Displaying Account View Hierarchy </apex:tab>
+        <apex:tab label="Opportunities" name="name2" id="tabTwo">All Opportunities of account</apex:tab>
+        <apex:tab label="Point Of Service " name="name3" id="tab3">Point Of Service</apex:tab>
+        <apex:tab label="Contracts" name="name4" id="tab4">Contracts</apex:tab>
+    </apex:tabPanel>
+    </apex:pageBlock>
+    
+    <style>
+    .activeTab {background-color: #236FBD; color:white; background-image:none}
+    .inactiveTab { background-color: lightgrey; color:black; background-image:none}
+    </style>
+            
+   
+</apex:page>

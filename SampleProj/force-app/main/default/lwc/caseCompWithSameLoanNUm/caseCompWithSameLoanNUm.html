@@ -1,0 +1,41 @@
+<template>
+   <lightning-card title="Cases with similar loan Number44"   icon-name="standard:contact"  > <br/>
+       <div style="width: auto;">
+           
+            <table class="  slds-scrollable slds-table slds-table_bordered slds-table_striped slds-table_cell-buffer slds-table--fixed-layout "  >
+                <thead>
+                  <tr class="slds-text-heading_label "  >
+                    <th scope="col"  ><div class="slds-truncate slds-cell-wrap" title="Case Number">Case Number</div></th>
+                    <th scope="col"  ><div class="slds-truncate slds-cell-wrap" title="Last Modify Date">Last Modify Date</div></th>
+                     <th scope="col" ><div class="slds-truncate slds-cell-wrap" title="Type">Type</div></th>
+                        
+                  </tr>
+                </thead>
+        <tbody>
+          <!-- Use the Apex model and controller to fetch server side data -->
+           <template for:each={cases.data} for:item="item" for:index="index">
+               
+              <tr key={item.Id}>
+                  <th scope="row" ><div class="slds-truncate " ><lightning-formatted-url value={item.url}  label={item.caseNum} target="_blank" ></lightning-formatted-url></div></th>
+                  
+                  <th scope="row"><div class="slds-truncate"  > <lightning-formatted-date-time value={item.casLastModfyDate} year="numeric" month="numeric" day="numeric" hour="2-digit"
+                              minute="2-digit" hour12="true"></lightning-formatted-date-time>
+                   </div></th>
+                   
+                  <th scope="row"><div class="slds-truncate" > {item.Type}
+                    
+                  </div></th>
+                   
+               
+                  
+                  </tr>
+              
+          </template>
+        
+        </tbody>
+      </table>
+                                    
+ 
+       </div>
+   </lightning-card>
+</template>

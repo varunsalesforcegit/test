@@ -1,0 +1,187 @@
+<apex:page controller="generatePDFCont"   applyHtmlTag="false" showHeader="false" sidebar="false"  renderAs="pdf">
+         <head>
+  <style>
+ #t02  td {
+ text-align: left;
+  border: 0px ;
+       
+}     
+     
+      hr { 
+  display: block;
+    margin-left: -40px;
+  margin-right: -50px;
+  border-width: 3px;
+} 
+     b {
+  font-family: Helvetica;
+  background-color: red;
+}
+   
+      
+     table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+  
+ td, 
+ th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+  tr:nth-child(even) {
+  background-color: #dddddd;
+}  
+      
+  
+      
+ </style> 
+  <style type="text/css" media="print">  
+       @page {
+            size:portrait;
+            margin-left: 1.54cm;
+            margin-right: 2.54cm;
+            margin-top: 2.54cm;
+            margin-bottom: 1.54cm;
+            @top-center {
+            content: element(header);
+            }
+            @bottom-left {
+            content: element(footer);
+            }
+            }
+            div.header {
+            padding: 20px;
+            position: running(header);
+            text-align: left;
+            }
+        
+            div.footer {
+            padding: 5px;
+            position: running(footer);
+            }
+            .pagenumber:before {
+            content: counter(page);
+            }
+            .pagecount:after {
+            content: counter(pages);
+            } 
+            
+        
+
+     
+        </style>    
+ </head>
+    
+
+
+
+ <div class="header">
+    
+     <table id ="t02">
+         
+          <tr id ="tr02" >
+             <td id ="td02" style="padding:0 50px 0 10px" >Credentialing Audit Report</td> 
+              
+             <td id ="td02"></td>
+             
+            
+         </tr>
+        
+  </table>
+      <hr/>
+     
+     
+     </div> 
+    <br/>
+
+    
+    <table id="t01">
+        <h1>
+            Provider Information1
+        </h1>
+        <tr>
+            <td colspan = "3">Row 3 Cell 1 </td>
+        </tr>
+        <tr>
+            <td colspan = "3">Row 3 Cell 2 </td>
+        </tr>
+        <tr>
+            <td colspan = "3">Row 3 Cell 3 </td>
+        </tr>
+        <tr>
+            <td colspan = "3"><b>
+                Test Bold
+                </b> Content New </td>
+        </tr>
+        <tr>
+            <td colspan = "3">Row 3 Cell 5 </td>
+        </tr>
+        
+        <br/>
+        <br/>
+        
+        <h1>
+         Office Information
+        </h1>
+        <tr>
+            <td colspan = "3">Mailing Address:</td>
+        </tr>
+        <tr>
+            <td colspan = "3" style="padding:0 150px 0 125px;" >Row 3 Cell 2 </td>
+        </tr>
+        <tr>
+            <td colspan = "3" style="padding:0 150px 0 125px;">Row 3 Cell 3 </td>
+        </tr>
+        <tr>
+            <td colspan = "3" style="padding:0 150px 0 125px;">Row 3 Cell 4 </td>
+        </tr>
+        <tr>
+            <td colspan = "3" style="padding:0 150px 0 125px;">Row 3 Cell 5 </td>
+        </tr>
+        <tr>
+            <td colspan = "3">Phone: </td>
+        </tr>
+        <tr>
+            <td colspan = "3">Fax </td>
+        </tr>
+        
+         <br/>
+        <br/>
+        
+        <h1>
+        Verification Assignment
+        </h1>
+       
+       
+        <tr style="background-color:#FF0000">
+            <td>Id:    </td>
+            <td colspan = "2">Verification Result </td>
+        </tr>
+         <tr>
+            <td colspan = "3">Source Web Site  &nbsp;  &nbsp;  &nbsp;  &nbsp;<a href="http://example.com">
+      Hello World
+    </a> </td>
+        </tr>
+        <tr>
+            <td colspan = "3">Fax </td>
+        </tr>
+ 		 <tr> 
+                <td colspan = "3">Auto Verification  </td>
+
+            </tr>
+         <tr> 
+                <td colspan = "3">Auto Verification2  </td>
+
+            </tr>
+        <tr> 
+                <td colspan = "3">Auto Verification3  </td>
+
+            </tr>
+    </table>
+ 
+     
+</apex:page>
