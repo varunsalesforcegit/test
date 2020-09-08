@@ -4,7 +4,7 @@ public class wrapperAccountOpportunity {
         recId = ApexPages.currentPage().getParameters().get('id');
         //fetchData();
     }
-    
+    //commnet added oneone
     public void fetchData(){
        List<Opportunity> allOpps = [Select name,Id,AccountId from Opportunity ];
         //Parent Id set
